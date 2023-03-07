@@ -1,21 +1,29 @@
-const emailInput = document.querySelector("#email");
-const usernameInput = document.querySelector("#username");
-const passwordInput = document.querySelector("#password");
-const loginBtn = document.querySelector("#login");
-const signupBtn = document.querySelector("#signup");
-const emailRegexCheck = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
-const usernameRegexCheck = /^[a-zA-Z]+$/
-const passwordRegexCheck = /^[a-zA-Z0-9]{6,12}$/
-
-function handleLoginSignup() {
-	if (!usernameRegexCheck.test(usernameInput.value) ||
-		!passwordRegexCheck.test(passwordInput.value) ||
-		!emailRegexCheck.test(emailInput.value)) {
-		alert("Invalid input");
-	} else {
-		alert(this.textContent + " successful");
-	}
+function loginSubmit() {
+	alert("Login Successful!");
 }
 
-loginBtn.addEventListener("click", handleLoginSignup);
-signupBtn.addEventListener("click", handleLoginSignup);
+function createAccount() {
+	var n = document.getElementById("username").value;
+	var e = document.getElementById("email").value;
+	var p = document.getElementById("password").value;
+	var cp = document.getElementById("confirm-password").value;
+
+	var letters = /^[A-Za-z]+$/;
+	var email_val = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+	if (!letters.test(n)) {
+		return alert('Name is incorrect must contain alphabets only');
+	} else if (!email_val.test(e)) {
+		return alert('Invalid email format please enter valid email id');
+	} else if (p != cp) {
+		return alert("Passwords not matching");
+	} else if (p.length > 12) {
+		return alert("Password maximum length is 12");
+	} else if (p.length < 6) {
+		return alert("Password minimum length is 6");
+	} else {
+		alert("Your account has been created successfully! Redirecting to Login Page...");
+		window.location = "./index.html";
+		return;
+	}
+}

@@ -1,0 +1,25 @@
+body {
+    background-color: #fffff0;
+}
+
+.wrapper {
+    text-align: center;
+    position: relative;
+    top: 30vh;
+}
+
+form, #form {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    grid-gap: 10px;
+    justify-content: center;
+}
+
+form label, #form label {
+    text-align: right;
+}
+
+button {
+    margin: 10px auto;
+    grid-column: span 2;
+}
