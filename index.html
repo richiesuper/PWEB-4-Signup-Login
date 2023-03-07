@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>JavaScript Forms</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #fffff0;
+            }
+
+            .wrapper {
+                text-align: center;
+                position: relative;
+                top: 30vh;
+            }
+
+            #form {
+                display: grid;
+                grid-template-columns: repeat(2, max-content);
+                grid-gap: 10px;
+                justify-content: center;
+            }
+
+            #form label {
+                text-align: right;
+            }
+
+            #buttons {
+                margin: 10px 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="wrapper">
+            <h1>LOGIN / REGISTER</h1>
+            <div id="form">
+                <label for="email">Email</label>
+                <input type="email" id="email">
+                <label for="username">Username</label>
+                <input type="text" id="username">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+            </div>
+            <div id="buttons">
+                <button type="button" id="login">Login</button>
+                <button type="button" id="signup">Sign Up</button>
+            </div>
+        </div>
+
+        <script>
+            const emailInput = document.querySelector("#email");
+            const usernameInput = document.querySelector("#username");
+            const passwordInput = document.querySelector("#password");
+            const loginBtn = document.querySelector("#login");
+            const signupBtn = document.querySelector("#signup");
+            const emailRegexCheck = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/
+            const usernameRegexCheck = /^[a-zA-Z]+$/
+            const passwordRegexCheck = /^[a-zA-Z0-9]{6,12}$/
+
+            function handleLoginSignup() {
+                if (!usernameRegexCheck.test(usernameInput.value) ||
+                    !passwordRegexCheck.test(passwordInput.value) ||
+                    !emailRegexCheck.test(emailInput.value)) {
+                    alert("Invalid input");
+                } else {
+                    alert(this.textContent + " successful");
+                }
+            }
+
+            loginBtn.addEventListener("click", handleLoginSignup);
+            signupBtn.addEventListener("click", handleLoginSignup);
+        </script>
+    </body>
+</html>
